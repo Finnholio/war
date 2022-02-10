@@ -67,6 +67,7 @@ print(player2)
 
 while len(player1) > 0 and len(player2) > 0:
     roundResult = 0
+    roundCards = []
 
     while (roundResult == 0):
         roundResult = compare(player1[0], player2[0])
@@ -76,36 +77,25 @@ while len(player1) > 0 and len(player2) > 0:
         print("player2 current cards : " + str(len(player2)))
         print("\n")
 
-        uinput = input("")
-        if uinput == "print":
-            print(player1)
-            print(player2)
+        roundCards.append(player1[0])
+        roundCards.append(player2[0])
+
+        del player1[0]
+        del player2[0]
+
+        print(len(roundCards))
 
         if roundResult == 1:
-            player1.append(player2[0])
-            del player2[0]
-
-            player1.append(player1[0])
-            del player1[0]
-
-            print("player 1 wins")
+            player1 += roundCards
+            print("Player 1 Wins!")
 
         elif roundResult == -1:
-            player2.append(player1[0])
-            del player1[0]
+            player2 += roundCards
+            print("Player 2 Wins!")
 
-            player2.append(player2[0])
-            del player2[0]
+        #uinput = input("")
 
-            print("player 2 wins")
 
-        else:
-            player1.append(player1[0])
-            del player1[0]
-
-            player2.append(player2[0])
-            del player2[0]
-
-        print("\n\n")
+        print("\n\n\n")
 
 
